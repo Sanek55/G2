@@ -10,13 +10,30 @@ public class PortBehaviour : MonoBehaviour
     public int currentAmountOfSupplies = 1; // Потом поменять на код для корабля
     public int singleSupplyCost = 3;
     public int portSuppliesLevel = 1;
+    private int totalSupplyIncrease = 0;
     private GameManager gameManager;
     void OnShipEntrance()
     {
        if (isShipInPort)
         {
-            int totalSupplyCost = 0000;
-           
+            GetTotalSupplyAmount();
+            int supplyIncreaseCost = singleSupplyCost * totalSupplyIncrease;
+            if (supplyIncreaseCost < gameManager.money){gameManager.money -= supplyIncreaseCost;}
+            else { Debug.Log("game over"); }
+        }
+    }
+    public void GetTotalSupplyAmount() 
+    {
+       int difference = MaxAmountOfSupplies - currentAmountOfSupplies;
+        if (difference < portSuppliesLevel) 
+        {
+            totalSupplyIncrease = difference;
+            currentAmountOfSupplies = MaxAmountOfSupplies;
+        }
+        else
+        {
+            totalSupplyIncrease = portSuppliesLevel;
+            currentAmountOfSupplies += totalSupplyIncrease;
         }
     }
     void Start()
