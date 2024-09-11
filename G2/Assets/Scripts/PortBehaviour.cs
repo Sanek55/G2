@@ -16,13 +16,13 @@ public class PortBehaviour : MonoBehaviour
     {
        if (isShipInPort)
         {
-            GetTotalSupplyAmount();
+            GetTotalSupplyIncrease();
             int supplyIncreaseCost = singleSupplyCost * totalSupplyIncrease;
             if (supplyIncreaseCost < gameManager.money){gameManager.money -= supplyIncreaseCost;}
             else { Debug.Log("game over"); }
         }
     }
-    public void GetTotalSupplyAmount() 
+    public void GetTotalSupplyIncrease() 
     {
        int difference = MaxAmountOfSupplies - currentAmountOfSupplies;
         if (difference < portSuppliesLevel) 
