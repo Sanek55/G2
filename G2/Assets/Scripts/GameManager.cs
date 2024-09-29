@@ -8,16 +8,16 @@ public class GameManager : MonoBehaviour
 {
     public int money = 1000; // количество монет
 
-    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI moneyText; 
 
-
+   
 
     void Start()
     {
-
+      
     }
 
-
+   
     void Update()
     {
         UpdateMoneyText();
