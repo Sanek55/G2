@@ -14,8 +14,11 @@ public class CamBehaviour : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
        HandleCameraMovement();
 =======
+=======
+>>>>>>> parent of 0f540c5 (пиздец)
 =======
 >>>>>>> parent of 0f540c5 (пиздец)
 =======
@@ -43,6 +46,9 @@ public class CamBehaviour : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 0f540c5 (пиздец)
+=======
 >>>>>>> parent of 0f540c5 (пиздец)
 =======
 >>>>>>> parent of 0f540c5 (пиздец)
@@ -69,6 +75,7 @@ public class CamBehaviour : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void HandleCameraMovement()
     {
         Vector3 inputDir = new Vector3(0, 0, 0);
@@ -88,6 +95,8 @@ public class CamBehaviour : MonoBehaviour
     {
         
     }
+=======
+>>>>>>> parent of 0f540c5 (пиздец)
 =======
 >>>>>>> parent of 0f540c5 (пиздец)
 =======
