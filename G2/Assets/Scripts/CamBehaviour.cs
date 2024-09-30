@@ -10,8 +10,11 @@ public class CamBehaviour : MonoBehaviour
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
        HandleCameraMovement();
 =======
+=======
+>>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
 =======
 >>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
         Vector3 inputDir = new Vector3(0,0,0);
@@ -27,6 +30,9 @@ public class CamBehaviour : MonoBehaviour
         float moveSpeed = 300f;
         transform.position += inputDir*moveSpeed*Time.deltaTime;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
+=======
 >>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
 =======
 >>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
@@ -39,6 +45,7 @@ public class CamBehaviour : MonoBehaviour
         transform.eulerAngles += new Vector3(0, rotateDir * rotateSpeed * Time.deltaTime, 0);*/ // поворот камеры не актуален пока
 
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     private void HandleCameraMovement()
@@ -60,6 +67,8 @@ public class CamBehaviour : MonoBehaviour
     {
         
     }
+=======
+>>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
 =======
 >>>>>>> parent of 0f540c5 (РїРёР·РґРµС†)
 =======
