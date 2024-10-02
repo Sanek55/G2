@@ -7,7 +7,7 @@ using Cinemachine;
 public class CamBehaviour : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private float fieldOfViewMax = 50;
+    [SerializeField] private float fieldOfViewMax = 100;
     [SerializeField] private float fieldOfViewMin = 10;
     private float targetFieldOfView;
      
@@ -15,6 +15,7 @@ public class CamBehaviour : MonoBehaviour
     {
         
         HandleCameraMovement();
+        HandleCameraZoom();
 
         /*float rotateDir = 0f;
         if (Input.GetKey(KeyCode.Q)) rotateDir = +1f;
@@ -39,21 +40,29 @@ public class CamBehaviour : MonoBehaviour
         transform.position += inputDir * moveSpeed * Time.deltaTime;
     }
 
-    private void HandleCameraZoom() 
+     private void HandleCameraZoom() 
+     {
+         if (Input.mouseScrollDelta.y > 0)
+         {
+             targetFieldOfView += 5;
+         }
+         if (Input.mouseScrollDelta.y < 0)
+         {
+             targetFieldOfView -= 5;
+         }
+
+         targetFieldOfView = Mathf.Clamp(targetFieldOfView, fieldOfViewMin, fieldOfViewMax);
+
+         cinemachineVirtualCamera.m_Lens.FieldOfView = targetFieldOfView;
+     }
+
+    /*private void HandleCameraZoom_MoveForward()
     {
         if (Input.mouseScrollDelta.y > 0)
         {
-            targetFieldOfView += 5;
+            cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(0, 10, -10);
         }
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            targetFieldOfView -= 5;
-        }
-
-        targetFieldOfView = Mathf.Clamp(targetFieldOfView, fieldOfViewMin, fieldOfViewMax);
-
-        cinemachineVirtualCamera.m_Lens.FieldOfView = targetFieldOfView;
-    }
-
+        
+    }*/
 }
 
