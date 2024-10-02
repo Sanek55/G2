@@ -10,6 +10,10 @@ public class CamBehaviour : MonoBehaviour
     [SerializeField] private float fieldOfViewMax = 100;
     [SerializeField] private float fieldOfViewMin = 10;
     private float targetFieldOfView;
+    public float cameraUpperBorderZ = 900;
+    public float cameraLowerBorderZ = -800;
+    public float cameraLeftBorderX = -1000;
+    public float cameraRightBorderX =900;
      
     private void Update()
     {
@@ -29,10 +33,11 @@ public class CamBehaviour : MonoBehaviour
         Vector3 inputDir = new Vector3(0, 0, 0);
 
 
-        if (Input.GetKey(KeyCode.W)) inputDir.z = +1f;
-        if (Input.GetKey(KeyCode.A)) inputDir.x = -1f;
-        if (Input.GetKey(KeyCode.S)) inputDir.z = -1f;
-        if (Input.GetKey(KeyCode.D)) inputDir.x = +1f;
+        if (Input.GetKey(KeyCode.W) && transform.position.z < cameraUpperBorderZ) inputDir.z = +1f;
+        if (Input.GetKey(KeyCode.S) && transform.position.z > cameraLowerBorderZ) inputDir.z = -1f;
+        if (Input.GetKey(KeyCode.D) && transform.position.x < cameraRightBorderX) inputDir.x = +1f;
+        if (Input.GetKey(KeyCode.A) && transform.position.x > cameraLeftBorderX) inputDir.x = -1f;
+
 
         Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
 
