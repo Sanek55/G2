@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 850, z: 60}
+  m_FollowOffset: {x: 0, y: 850, z: 60.64}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -721,9 +721,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 65
+  near clip plane: 1
+  far clip plane: 3000
+  field of view: 100
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -749,8 +749,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6817576, y: -0.0000015236723, z: 0.0000014199101, w: 0.7315782}
-  m_LocalPosition: {x: -1004, y: 850, z: -1063}
+  m_LocalRotation: {x: 0.6814836, y: 0.00000017840722, z: -0.00000016613289, w: 0.7318334}
+  m_LocalPosition: {x: -420, y: 850, z: -397.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2189,7 +2189,7 @@ Transform:
   m_GameObject: {fileID: 1263848598}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: -1004, y: 0, z: -1003}
+  m_LocalPosition: {x: -420, y: 0, z: -337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2934,8 +2934,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065423747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7315782, y: 0.0000014199101, z: 0.0000015236723, w: 0.6817576}
-  m_LocalPosition: {x: 0, y: -850, z: 60}
+  m_LocalRotation: {x: -0.73183346, y: -0.00000016613275, z: -0.0000001784071, w: 0.68148357}
+  m_LocalPosition: {x: 0, y: -850, z: 60.640015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2963,10 +2963,10 @@ MonoBehaviour:
   m_LookAt: {fileID: 1263848600}
   m_Follow: {fileID: 1263848600}
   m_Lens:
-    FieldOfView: 65
+    FieldOfView: 100
     OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 3000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
