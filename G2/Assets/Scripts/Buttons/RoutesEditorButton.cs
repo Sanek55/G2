@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoutesEditorButton : MonoBehaviour
+public class TrueFalseButton : MonoBehaviour
 {
     public GameObject BasicCanvas;
     public GameObject RoutesEditor;

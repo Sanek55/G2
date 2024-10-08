@@ -6,7 +6,7 @@ using TMPro; //библиотека которая позволяет испоьзовать TextMeshProUGUI
 
 public class GameManager : MonoBehaviour
 {
-    public int money = 1000; // количество монет
+    public int money = 1000; // количество монет |Ну такие банальности мог бы и не писать)
 
     public TextMeshProUGUI moneyText;
 

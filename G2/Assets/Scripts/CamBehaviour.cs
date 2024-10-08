@@ -10,10 +10,10 @@ public class CamBehaviour : MonoBehaviour
     [SerializeField] private float fieldOfViewMax = 100;
     [SerializeField] private float fieldOfViewMin = 10;
     private float targetFieldOfView;
-    public float cameraUpperBorderZ = 900;
-    public float cameraLowerBorderZ = -800;
-    public float cameraLeftBorderX = -1000;
-    public float cameraRightBorderX =900;
+    public float cameraUpperBorderZ;
+    public float cameraLowerBorderZ;
+    public float cameraLeftBorderX;
+    public float cameraRightBorderX;
      
     private void Update()
     {
