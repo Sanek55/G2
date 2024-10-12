@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using JetBrains.Annotations;
@@ -13,6 +14,7 @@ public class RoutesEditor : MonoBehaviour
     
     void Start()
     {
+
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
     }
 
@@ -21,7 +23,7 @@ public class RoutesEditor : MonoBehaviour
     {
         
     }
-    public void OnPortClick()
+    /*public void OnPortClick()
     {
         if(routesEditorButton.isRoutesEditorOn == true)
         {
@@ -40,5 +42,5 @@ public class RoutesEditor : MonoBehaviour
                 // та я низнаю
             }
         }
-    }
+    }*/
 }

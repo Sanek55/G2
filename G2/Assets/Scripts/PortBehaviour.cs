@@ -18,12 +18,12 @@ public class PortBehaviour : MonoBehaviour
     public int resourseCounter = 0; // Replace later
 
     private GameManager gameManager;
-    //private RoutesEditor routesEditor;
+    private RoutesEditor routesEditor;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-
+        routesEditor = FindObjectOfType<RoutesEditor>();
     }
 
     // Update is called once per frame
@@ -31,6 +31,9 @@ public class PortBehaviour : MonoBehaviour
     {
         PortProduction();
         OnShipEntrance();
+        //routesEditor.OnPortClick();
+
+
 
     }
     void OnShipEntrance()
