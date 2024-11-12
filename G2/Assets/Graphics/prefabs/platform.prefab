@@ -116,7 +116,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6994910439250130360}
-  - component: {fileID: 337056792415075871}
   m_Layer: 0
   m_Name: platform
   m_TagString: Untagged
@@ -140,23 +139,3 @@ Transform:
   - {fileID: 5504001538511885097}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &337056792415075871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9044595586256393618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8640602d6b6ae547a41e905b4d1b5bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isShipInPort: 0
-  MaxAmountOfSupplies: 10
-  currentAmountOfSupplies: 1
-  singleSupplyCost: 3
-  portSuppliesLevel: 1
-  portProductionLevel: 0
-  productionCooldown: 60
-  resourseCounter: 0

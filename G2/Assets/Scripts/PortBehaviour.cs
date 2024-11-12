@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PortBehaviour : MonoBehaviour
@@ -18,20 +15,25 @@ public class PortBehaviour : MonoBehaviour
     public int resourseCounter = 0; // Replace later
 
     private GameManager gameManager;
-    private RoutesEditor routesEditor;
+    public RoutesEditorManager routesEditor; // = new RoutesEditor();
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        routesEditor = FindObjectOfType<RoutesEditor>();
+
+        //routesEditor = FindObjectOfType<RoutesEditor>();
+        //Debug.Log(routesEditor);
+        routesEditor = routesEditor.GetComponent<RoutesEditorManager>();
+
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         PortProduction();
         OnShipEntrance();
-        //routesEditor.OnPortClick();
+       
+        routesEditor.OnPortClick();
 
 
 
@@ -60,18 +62,18 @@ public class PortBehaviour : MonoBehaviour
             currentAmountOfSupplies += totalSupplyIncrease;
         }
     }
-    
-    void PortProduction() 
+
+    void PortProduction()
     {
         productionCooldown -= Time.deltaTime;
         if (portProductionLevel >= 1)
         {
-           if (productionCooldown <= 0) 
+            if (productionCooldown <= 0)
             {
-                resourseCounter +=portProductionLevel;
-                productionCooldown = 60; 
+                resourseCounter += portProductionLevel;
+                productionCooldown = 60;
             }
         }
     }
-   
+
 }

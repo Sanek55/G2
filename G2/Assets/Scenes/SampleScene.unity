@@ -459,7 +459,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 106703073}
-        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_TargetAssemblyTypeName: RoutesEditorButton, Assembly-CSharp
         m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -523,12 +523,10 @@ MonoBehaviour:
   BasicCanvas: {fileID: 601259719}
   RoutesEditor: {fileID: 555170677}
   BasicCanvasIsEnabled: 1
-  buttonImage: {fileID: 106703071}
-  enableIcon: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
-  disableIcon: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
-  isRoutesEditorOn: 0
+  RoutesEditorIsEnabled: 0
+  buttonImage: {fileID: 0}
+  enableIcon: {fileID: 0}
+  disableIcon: {fileID: 0}
 --- !u!1001 &149228397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,6 +535,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 337056792415075871, guid: ff79d9f666122a84fa5ebb8dc88b1ce2,
+        type: 3}
+      propertyPath: routesEditor
+      value: 
+      objectReference: {fileID: 1002106582}
     - target: {fileID: 5504001538511885097, guid: ff79d9f666122a84fa5ebb8dc88b1ce2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -759,6 +762,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -918,6 +922,22 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1198,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1622056484097343049, guid: 8bd7af93f06723a458d4437eab0e7ba8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5504001538511885097, guid: 8bd7af93f06723a458d4437eab0e7ba8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2191,7 +2216,7 @@ GameObject:
   - component: {fileID: 1002106583}
   - component: {fileID: 1002106582}
   m_Layer: 0
-  m_Name: RoutesEditor
+  m_Name: RoutesEditorManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3194,6 +3219,223 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1815143358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815143360}
+  - component: {fileID: 1815143359}
+  m_Layer: 0
+  m_Name: Spline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1815143359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815143358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e68924c9f6324bbfd049d3bae754c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorDrawPivot: 1
+  editorPathColor: {r: 1, g: 1, b: 1, a: 1}
+  editorAlwaysDraw: 0
+  editorDrawThickness: 0
+  editorBillboardThickness: 1
+  isNewlyCreated: 0
+  editorUpdateMode: 0
+  multithreaded: 0
+  updateMode: 0
+  triggerGroups: []
+  _spline:
+    points:
+    - _type: 0
+      position: {x: -377.4681, y: 0, z: -275.3468}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      normal: {x: 0, y: 1, z: 0}
+      size: 1
+      tangent: {x: -809.14087, y: 0, z: -168.29376}
+      tangent2: {x: 54.20468, y: 0, z: -382.39984}
+    - _type: 0
+      position: {x: -167.1435, y: 0, z: -289.54224}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      normal: {x: 0, y: 1, z: 0}
+      size: 1
+      tangent: {x: -167.1435, y: 0, z: -289.54224}
+      tangent2: {x: -167.1435, y: 0, z: -289.54224}
+    - _type: 0
+      position: {x: 139.17792, y: -0.000061035156, z: -257.93274}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      normal: {x: 0, y: 1, z: 0}
+      size: 1
+      tangent: {x: 139.17792, y: -0.000061035156, z: -257.93274}
+      tangent2: {x: 139.17792, y: -0.000061035156, z: -257.93274}
+    type: 0
+    linearAverageDirection: 1
+    customValueInterpolation:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    customNormalInterpolation:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    sampleRate: 10
+    closed: 0
+    _knotParametrization: 0
+  _originalSamplePercents: []
+  _is2D: 0
+  hasSamples: 1
+  _optimizeAngleThreshold: 0.5
+  _space: 1
+  _sampleMode: 0
+  _subscribers: []
+  _rawSamples:
+  - position: {x: -377.4681, y: 0, z: -275.3468}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99773014, y: 0, z: -0.06733978}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0
+  - position: {x: -354.62543, y: 0.00000033489798, z: -277.1754}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9958377, y: 0.000000027938798, z: -0.09114502}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.05555555555555555
+  - position: {x: -332.57288, y: 0.0000011721429, z: -279.38098}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9943251, y: 0.00000004584804, z: -0.10638439}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.1111111111111111
+  - position: {x: -310.91534, y: 0.0000022605614, z: -281.7751}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9937495, y: 0.000000052020756, z: -0.11163322}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.16666666666666666
+  - position: {x: -289.2578, y: 0.0000033489798, z: -284.1692}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9943251, y: 0.000000045848026, z: -0.10638435}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.2222222222222222
+  - position: {x: -267.20523, y: 0.000004186225, z: -286.3748}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9958377, y: 0.000000027938793, z: -0.09114502}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.2777777777777778
+  - position: {x: -244.36256, y: 0.0000045211227, z: -288.20337}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99773014, y: -8.628855e-15, z: -0.06733978}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.3333333333333333
+  - position: {x: -220.33473, y: 0.0000041024996, z: -289.4665}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99931365, y: -0.00000003549213, z: -0.037043326}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.3888888888888889
+  - position: {x: -194.72673, y: 0.000002679184, z: -289.9756}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9999966, y: -0.00000007574056, z: -0.0026117424}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.4444444444444444
+  - position: {x: -167.1435, y: 0, z: -289.54224}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99943244, y: -0.00000011807024, z: 0.033686854}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.5
+  - position: {x: -137.32162, y: -0.0000041025005, z: -288.0407}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9978999, y: -0.00000015424207, z: 0.06477589}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.5555555555555556
+  - position: {x: -105.524536, y: -0.000009460868, z: -285.5967}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99620616, y: -0.00000018008072, z: 0.087024145}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.6111111111111112
+  - position: {x: -72.14723, y: -0.00001582393, z: -282.39868}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99471796, y: -0.00000019819956, z: 0.10264557}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.6666666666666666
+  - position: {x: -37.584793, y: -0.00002294051, z: -278.63522}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99359417, y: -0.0000002102071, z: 0.11300729}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.7222222222222222
+  - position: {x: -2.2322397, y: -0.000030559444, z: -274.4947}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9929024, y: -0.00000021706913, z: 0.11893218}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.7777777777777778
+  - position: {x: 33.51534, y: -0.00003842954, z: -270.1657}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9926694, y: -0.00000021930224, z: 0.12086084}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.8333333333333334
+  - position: {x: 69.26293, y: -0.000046299647, z: -265.83673}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.9929024, y: -0.0000002170691, z: 0.118932135}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.8888888888888888
+  - position: {x: 104.61546, y: -0.00005391857, z: -261.69623}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99359417, y: -0.00000021020708, z: 0.11300732}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.9444444444444444
+  - position: {x: 139.17792, y: -0.000061035156, z: -257.93274}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99471796, y: -0.00000019819956, z: 0.10264557}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 1
+  _nodes: []
+--- !u!4 &1815143360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815143358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821079389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,3 +3917,4 @@ SceneRoots:
   - {fileID: 149228397}
   - {fileID: 1002106583}
   - {fileID: 541633625}
+  - {fileID: 1815143360}

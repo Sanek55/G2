@@ -4,32 +4,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrueFalseButton : MonoBehaviour
+public class RoutesEditorButton : MonoBehaviour
 {
     public GameObject BasicCanvas;
     public GameObject RoutesEditor;
     public bool BasicCanvasIsEnabled = true;
-    //public bool RoutesEditorIsEnabled = false;
+    public bool RoutesEditorIsEnabled = false;
     public Image buttonImage;
     public Sprite enableIcon;
     public Sprite disableIcon;
-    public bool isRoutesEditorOn = false;
 
     public void ButtonClicked()
     {
         BasicCanvasIsEnabled = !BasicCanvasIsEnabled;
-        isRoutesEditorOn = !BasicCanvasIsEnabled;
+        RoutesEditorIsEnabled = !RoutesEditorIsEnabled;
         BasicCanvas.SetActive(BasicCanvasIsEnabled);
         RoutesEditor.SetActive(!BasicCanvasIsEnabled);
 
-        if (BasicCanvasIsEnabled)
+        /*if (BasicCanvasIsEnabled)
         {
             buttonImage.sprite = enableIcon;
         }
         else 
         {
             buttonImage.sprite = disableIcon;
-        }
+        }*/
     }
        
         void Start()

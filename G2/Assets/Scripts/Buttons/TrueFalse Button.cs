@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoutesEditorButton : MonoBehaviour
+public class TrueFalseButton : MonoBehaviour
 {
     public GameObject BasicCanvas;
     public GameObject RoutesEditor;
@@ -14,7 +14,6 @@ public class RoutesEditorButton : MonoBehaviour
     public Sprite enableIcon;
     public Sprite disableIcon;
     public bool isRoutesEditorOn = false;
-
     public void ButtonClicked()
     {
         BasicCanvasIsEnabled = !BasicCanvasIsEnabled;
@@ -30,14 +29,11 @@ public class RoutesEditorButton : MonoBehaviour
         {
             buttonImage.sprite = disableIcon;
         }
-    }
-       
+    }  
         void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
