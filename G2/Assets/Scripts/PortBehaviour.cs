@@ -33,7 +33,7 @@ public class PortBehaviour : MonoBehaviour
         PortProduction();
         OnShipEntrance();
        
-        routesEditor.OnPortClick();
+        routesEditor.OnPortClickEditorMode();
 
 
 
