@@ -64,44 +64,49 @@ public class RoutesEditorManager : MonoBehaviour
     public void PointsAddition (SplineComputer spline, bool firstPortClick)
     {
         SplinePoint[] points = new SplinePoint[5];
-        //if (points != null) { Debug.Log("points is created"); }
-        if (Input.GetMouseButtonDown(0) && firstPortClick == false)
+        spline.space = SplineComputer.Space.World;
+        if (Input.GetMouseButtonDown(0) && firstPortClick == false) 
         {
             for (int i = 0; i < points.Length; i++)
             {
                 if (i == 0)
                 {
                     points[i] = new SplinePoint();
-                    //Debug.Log(points[i]);
-                    
                     points[i].position = port.transform.position;
-                    //Debug.Log(points[i].position);
-                    
                     points[i].normal = Vector3.up;
-                   // Debug.Log(points[i].normal);
-                    
                     points[i].size = 1f;
-                    //Debug.Log(points[i].size);
-                    
                     points[i].color = Color.white;
-                    //Debug.Log(points[i].color);
+                    /*Õ-------------------------------ÏÐÅÄÈÄÓÙÈÉ-ÂÀÐÈÀÍÒ-ÊÎÄÀ------------------------------------Õ
+                    points[i] = new SplinePoint();
+
+                    // Ðîäèòåëüñêèé îáúåêò ñïëàéíà
+                    Transform splineParent = port.transform;
+
+                    // Âû÷èñëÿåì ïîçèöèþ
+                    Vector3 portWorldPosition = port.transform.position;
+                    Vector3 portLocalPosition = splineParent != null
+                        ? splineParent.transform.InverseTransformPoint(portWorldPosition)
+                        : portWorldPosition;
+
+                    // Ïðèñâàèâàåì ïîçèöèþ
+                    points[i].position = portLocalPosition;
+
+                    points[i].normal = Vector3.up;
+                    points[i].size = 1f;
+                    points[i].color = Color.white;
+                    spline.space = SplineComputer.Space.World;
+                    // Îòëàäêà
+                    Debug.Log($"Port World Position: {portWorldPosition}");
+                    Debug.Log($"Assigned SplinePoint Position: {points[i].position}");
+                    Õ-------------------------------ÏÐÅÄÈÄÓÙÈÉ-ÂÀÐÈÀÍÒ-ÊÎÄÀ------------------------------------Õ*/
                 }
                 else 
                 {
                     points[i] = new SplinePoint();
-                   // Debug.Log(points[i]);
-
                     points[i].position = Input.mousePosition;
-                   // Debug.Log(points[i].position);
-
                     points[i].normal = Vector3.zero;
-                   // Debug.Log(points[i].normal);
-
                     points[i].size = 1f;
-                    //Debug.Log(points[i].size);
-
                     points[i].color = Color.white;
-                    //Debug.Log(points[i].color);
                 }
                 
             }
