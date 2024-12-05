@@ -617,7 +617,7 @@ namespace Dreamteck.Splines
         {
             SplinePoint[] points = new SplinePoint[_spline.points.Length];
             for (int i = 0; i < points.Length; i++)
-            {
+            { 
                 points[i] = _spline.points[i];
                 if (_space == Space.Local && getSpace == Space.World)
                 {

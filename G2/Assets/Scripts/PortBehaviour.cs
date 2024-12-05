@@ -1,7 +1,12 @@
+using Dreamteck.Splines;
 using UnityEngine;
 
 public class PortBehaviour : MonoBehaviour
 {
+    //Свойства Порта
+    public string portName;
+    public int portID;
+    // Temporary 
     public bool isShipInPort = false; // Потом поменять на код с коллайдером
     // Снабжение
     public int MaxAmountOfSupplies = 10;//Значение дял изменения
@@ -15,7 +20,8 @@ public class PortBehaviour : MonoBehaviour
     public int resourseCounter = 0; // Replace later
 
     private GameManager gameManager;
-    public RoutesEditorManager routesEditor; // = new RoutesEditor();
+    public GameObject splineManager;
+    private SplineManager routesEditorManager; // = new RoutesEditor();
 
     void Start()
     {
@@ -23,7 +29,7 @@ public class PortBehaviour : MonoBehaviour
 
         //routesEditor = FindObjectOfType<RoutesEditor>();
         //Debug.Log(routesEditor);
-        routesEditor = routesEditor.GetComponent<RoutesEditorManager>();
+        routesEditorManager = splineManager.GetComponent<SplineManager>();
 
 
     }
@@ -33,7 +39,7 @@ public class PortBehaviour : MonoBehaviour
         PortProduction();
         OnShipEntrance();
        
-        routesEditor.OnPortClickEditorMode();
+        //routesEditorManager.OnPortClickEditorMode();
 
 
 
