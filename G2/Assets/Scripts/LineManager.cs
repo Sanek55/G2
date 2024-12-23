@@ -11,38 +11,43 @@ using UnityEngine.U2D;
 using UnityEditor.Experimental.GraphView;
 using System.Net;
 using UnityEngine.AI;
+using Dreamteck.Splines.Editor;
 
-public class SplineManager : MonoBehaviour
+public class LineManager : MonoBehaviour
 {
+    //ссылки------------------------------------------------------------------
+
     private RoutesEditorButton routesEditorButton;
     private Utilities utilities;
-
-    public List<GameObject> ports = new List<GameObject>();
-    public SplinePoint[] points = new SplinePoint[1];
-    bool firstClick = true;
-
-    public GameObject splineManager;
-
+    public GameObject lineManager;
+    public LineRendererSmoother lrSmoother;
+    public LineRenderer lineRenderer;
+    public BezierCurve bezierCurve;
+    
 
 
-    SplineComputer spline;
-    SplineRenderer splineRenderer;
+    //объекты-----------------------------------------------------------------
 
     GameObject selectedObject;
     GameObject port;
 
+    //переменные-----------------------------------------------------------------
+    public List<GameObject> ports = new List<GameObject>();
+    public Vector3[] points;
+    bool firstClick = true;
 
 
-    void Start()
+
+    public void Start()
     {
-      
+        points = bezierCurve.Points;
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
-
-
+        
     }
     void Update()
     {
         OnPortClickEditorMode();
+        
     }
     public void OnPortClickEditorMode()
     {
@@ -52,15 +57,15 @@ public class SplineManager : MonoBehaviour
 
             if (firstClick)
             {
-                spline = splineManager.AddComponent<SplineComputer>();
-                splineRenderer = splineManager.AddComponent<SplineRenderer>();
-                splineRenderer.spline = spline;
-                PointsAddition(spline);
+                lineRenderer = lineManager.AddComponent<LineRenderer>();
+                lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
+                lrSmoother.Line = lineRenderer;
+              //PointsAddition(lr); // замена
                 firstClick = false;
             }
             else
             {
-                PointsAddition(spline);
+                //PointsAddition(lr); //замена
             }
         }
 
@@ -82,12 +87,11 @@ public class SplineManager : MonoBehaviour
        
         return false;
     }
-    public void PointsAddition (SplineComputer spline)
+    public void PointsAddition (SplineComputer spline) //замена
     {
-        spline.space = SplineComputer.Space.World;
         if (firstClick)
         {
-            PointAddition(points, 0, ports[ports.Count-1].transform.position);
+            PointAddition(points, 0, ports[ports.Count-1].transform.position); 
         }
         else 
         {
@@ -126,25 +130,20 @@ public class SplineManager : MonoBehaviour
             }
 
         }
-        spline.SetPoints(points);
 
-        SplinePoint PointAddition(SplinePoint[] splinePoints, int splinePointNumber, Vector3 pointCords)
+        Vector3 PointAddition(Vector3[] linePoints, int linePointNumber, Vector3 pointCords) //подкорректировать
         {
-            Debug.Log(splinePoints.Length);
-            Debug.Log(splinePointNumber);
-            Debug.Log(splinePoints.Length > splinePointNumber);
-            if (splinePoints[splinePointNumber] == null)
+            Debug.Log(linePoints.Length);
+            Debug.Log(linePointNumber);
+            Debug.Log(linePoints.Length > linePointNumber);
+            if (linePoints[linePointNumber] == null)
             {
-                splinePoints[splinePointNumber] = new SplinePoint();
+                linePoints[linePointNumber] = new Vector3();
+                linePoints[linePointNumber] = pointCords;
             }
-
-            splinePoints[splinePointNumber].position = pointCords;
-            splinePoints[splinePointNumber].normal = Vector3.zero;
-            splinePoints[splinePointNumber].size = 1f;
-            splinePoints[splinePointNumber].color = Color.white;
-
-            return splinePoints[splinePointNumber];
+            return linePoints[linePointNumber];
         }
 
     }
+   
 }

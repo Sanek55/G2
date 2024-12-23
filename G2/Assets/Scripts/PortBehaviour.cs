@@ -20,8 +20,8 @@ public class PortBehaviour : MonoBehaviour
     public int resourseCounter = 0; // Replace later
 
     private GameManager gameManager;
-    public GameObject splineManager;
-    private SplineManager routesEditorManager; // = new RoutesEditor();
+    //public GameObject splineManager;
+    private LineManager routesEditorManager; // = new RoutesEditor();
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class PortBehaviour : MonoBehaviour
 
         //routesEditor = FindObjectOfType<RoutesEditor>();
         //Debug.Log(routesEditor);
-        routesEditorManager = splineManager.GetComponent<SplineManager>();
+       // routesEditorManager = splineManager.GetComponent<LineManager>();
 
 
     }
