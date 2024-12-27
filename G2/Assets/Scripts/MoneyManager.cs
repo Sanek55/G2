@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyManager : MonoBehaviour
+public class moneyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int money = 500;
+
+    public void SpendMoney(int amount)
     {
-        
+        if (money >= amount)
+        {
+            money -= amount;
+        }
+        else
+        {
+            Debug.Log("недостаточно монет!");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool HasEnoughtMoney(int amount)
     {
-        
+        return money < amount;
     }
+
 }
