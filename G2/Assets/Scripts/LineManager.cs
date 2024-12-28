@@ -23,7 +23,7 @@ public class LineManager : MonoBehaviour
     public LineRendererSmoother lrSmoother;
     public LineRenderer lineRenderer;
     public BezierCurve bezierCurve;
-    
+
 
 
     //объекты-----------------------------------------------------------------
@@ -33,16 +33,15 @@ public class LineManager : MonoBehaviour
 
     //переменные-----------------------------------------------------------------
     public List<GameObject> ports = new List<GameObject>();
-    public Vector3[] points;
+    public Vector3[] points = new Vector3[4];
     bool firstClick = true;
 
 
-
-    public void Start()
+    public void Awake()
     {
+        Debug.Log($"Before assignment: points length = {points.Length}");
         points = bezierCurve.Points;
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
-        
     }
     void Update()
     {
@@ -60,12 +59,12 @@ public class LineManager : MonoBehaviour
                 lineRenderer = lineManager.AddComponent<LineRenderer>();
                 lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
                 lrSmoother.Line = lineRenderer;
-              //PointsAddition(lr); // замена
+                PointsAddition(); 
                 firstClick = false;
             }
             else
             {
-                //PointsAddition(lr); //замена
+                PointsAddition();
             }
         }
 
@@ -87,7 +86,7 @@ public class LineManager : MonoBehaviour
        
         return false;
     }
-    public void PointsAddition (SplineComputer spline) //замена
+    public void PointsAddition ()
     {
         if (firstClick)
         {
@@ -95,14 +94,13 @@ public class LineManager : MonoBehaviour
         }
         else 
         {
-            int oldPointsLength = points.Length;
-
-            utilities.PointsArrayResize(points, (ports.Count-1)*3+1);
+            //int oldPointsLength = points.Length;
+           // utilities.PointsArrayResize(points, (ports.Count-1)*3+1);
             Vector3 secondQuartile = (ports[ports.Count - 1].transform.position + ports[ports.Count - 2].transform.position)/2;
             Vector3 firstQuartile = (ports[ports.Count - 2].transform.position + secondQuartile)/2;
             Vector3 thirdQuartile = (secondQuartile + ports[ports.Count-1].transform.position)/2;
 
-            for (int i = oldPointsLength; i < points.Length; i++)
+            for (int i = /*oldPointsLength*/ 0; i < points.Length; i++)
             {
                 switch (i % 3)
                 {
@@ -128,17 +126,21 @@ public class LineManager : MonoBehaviour
                 }
                    
             }
+            lineRenderer.positionCount = points.Length;
+            lineRenderer.SetPositions(points);
 
         }
 
         Vector3 PointAddition(Vector3[] linePoints, int linePointNumber, Vector3 pointCords) //подкорректировать
         {
-            Debug.Log(linePoints.Length);
-            Debug.Log(linePointNumber);
-            Debug.Log(linePoints.Length > linePointNumber);
+
             if (linePoints[linePointNumber] == null)
             {
                 linePoints[linePointNumber] = new Vector3();
+                linePoints[linePointNumber] = pointCords;
+            }
+            else
+            {
                 linePoints[linePointNumber] = pointCords;
             }
             return linePoints[linePointNumber];
