@@ -1035,8 +1035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895590b0469039f49bdd512565eab401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  utilities: {fileID: 1605583149}
   lineManager: {fileID: 288046845}
   lrSmoother: {fileID: 0}
+  lrSmootherEditor: {fileID: 0}
   lineRenderer: {fileID: 0}
   bezierCurve:
     Points:
@@ -1044,8 +1046,10 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
+    lineManager: {fileID: 288046846}
   ports: []
   points: []
+  repetitionsCounter: 0
 --- !u!4 &288046847
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,7 +1261,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 3000
-  field of view: 55
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2660,7 +2664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &841426446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3728,6 +3732,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff79d9f666122a84fa5ebb8dc88b1ce2, type: 3}
+--- !u!1 &1307107006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307107007}
+  m_Layer: 0
+  m_Name: LineObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1307107007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307107006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 978.75757, y: -9182.316, z: 5145.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324034334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,7 +4474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1529299762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5334,7 +5369,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1263848600}
   m_Follow: {fileID: 1263848600}
   m_Lens:
-    FieldOfView: 55
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 1
     FarClipPlane: 3000
@@ -5455,3 +5490,4 @@ SceneRoots:
   - {fileID: 841426449}
   - {fileID: 2049498562}
   - {fileID: 2030216826}
+  - {fileID: 1307107007}

@@ -12,62 +12,62 @@ using UnityEditor.Experimental.GraphView;
 using System.Net;
 using UnityEngine.AI;
 using Dreamteck.Splines.Editor;
+using Dreamteck.Utilities;
 
 public class LineManager : MonoBehaviour
 {
     //ссылки------------------------------------------------------------------
 
     private RoutesEditorButton routesEditorButton;
-    private Utilities utilities;
+    public Utilities utilities;
     public GameObject lineManager;
     public LineRendererSmoother lrSmoother;
+    public LineRendererSmoother lrSmootherEditor;
     public LineRenderer lineRenderer;
     public BezierCurve bezierCurve;
-
-
 
     //объекты-----------------------------------------------------------------
 
     GameObject selectedObject;
     GameObject port;
 
-    //переменные-----------------------------------------------------------------
+    //переменные--------------------------------------------------------------
+   
     public List<GameObject> ports = new List<GameObject>();
     public Vector3[] points = new Vector3[4];
-    bool firstClick = true;
+    bool firstPortSelected = true;
+    public int repetitionsCounter;
 
+    //------------------------------------------------------------------------
 
     public void Awake()
     {
-        Debug.Log($"Before assignment: points length = {points.Length}");
         points = bezierCurve.Points;
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
     }
     void Update()
     {
-        OnPortClickEditorMode();
-        
+        OnEditorMode();
     }
-    public void OnPortClickEditorMode()
+    public void OnEditorMode()
     {
         if (routesEditorButton.RoutesEditorIsEnabled && Input.GetMouseButtonDown(0) && PortCheck())
         {
             ports.Add(port);
 
-            if (firstClick)
+            if (firstPortSelected)
             {
                 lineRenderer = lineManager.AddComponent<LineRenderer>();
                 lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
                 lrSmoother.Line = lineRenderer;
                 PointsAddition(); 
-                firstClick = false;
+                firstPortSelected = false;
             }
             else
             {
                 PointsAddition();
             }
         }
-
     }
     public bool PortCheck()
     {
@@ -83,24 +83,56 @@ public class LineManager : MonoBehaviour
                     return true;
                 }
             }
-       
         return false;
     }
-    public void PointsAddition ()
+    public void PointsAddition()
     {
-        if (firstClick)
+        int arrayFillNumber = 0;
+
+        if (firstPortSelected)
         {
-            PointAddition(points, 0, ports[ports.Count-1].transform.position); 
+            PointAddition(points, 0, ports[ports.Count-1].transform.position);
         }
         else 
         {
-            //int oldPointsLength = points.Length;
-           // utilities.PointsArrayResize(points, (ports.Count-1)*3+1);
-            Vector3 secondQuartile = (ports[ports.Count - 1].transform.position + ports[ports.Count - 2].transform.position)/2;
-            Vector3 firstQuartile = (ports[ports.Count - 2].transform.position + secondQuartile)/2;
-            Vector3 thirdQuartile = (secondQuartile + ports[ports.Count-1].transform.position)/2;
+            if (repetitionsCounter > 0)
+            {
+                int oldPointsLength = points.Length;
+                points = utilities.PointsArrayResize(points, (ports.Count - 1) * 3 + 1);
+                PointPositionSet(oldPointsLength, points, ports);
+            }
+            else 
+            {
+                PointPositionSet(0, points, ports);
+            }
 
-            for (int i = /*oldPointsLength*/ 0; i < points.Length; i++)
+            for (int i = 0; i < points.Length; i++)
+            {
+
+                if (points[i] == null) 
+                { 
+                    continue; 
+                }
+                else 
+                { 
+                    arrayFillNumber++; 
+                }
+            }
+            lineRenderer.positionCount = points.Length;
+            lineRenderer.SetPositions(points);
+
+            if (arrayFillNumber == points.Length) 
+            { 
+                repetitionsCounter++; 
+            }
+        }
+        Vector3[] PointPositionSet(int amountOfAssignedPoints, Vector3[] points, List<GameObject> ports)
+        {
+            Vector3 secondQuartile = (ports[ports.Count - 1].transform.position + ports[ports.Count - 2].transform.position) / 2;
+            Vector3 firstQuartile = (ports[ports.Count - 2].transform.position + secondQuartile) / 2;
+            Vector3 thirdQuartile = (secondQuartile + ports[ports.Count - 1].transform.position) / 2;
+
+            for (int i = amountOfAssignedPoints; i < points.Length; i++)
             {
                 switch (i % 3)
                 {
@@ -124,13 +156,10 @@ public class LineManager : MonoBehaviour
 
                         break;
                 }
-                   
+
             }
-            lineRenderer.positionCount = points.Length;
-            lineRenderer.SetPositions(points);
-
+            return points;
         }
-
         Vector3 PointAddition(Vector3[] linePoints, int linePointNumber, Vector3 pointCords) //подкорректировать
         {
 
@@ -145,7 +174,9 @@ public class LineManager : MonoBehaviour
             }
             return linePoints[linePointNumber];
         }
+        
+  
+
 
     }
-   
 }
