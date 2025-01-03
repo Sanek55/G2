@@ -25,11 +25,13 @@ public class LineManager : MonoBehaviour
     public LineRendererSmoother lrSmootherEditor;
     public LineRenderer lineRenderer;
     public BezierCurve bezierCurve;
+    PointBehaviour pointBehaviour;
 
     //объекты-----------------------------------------------------------------
 
     GameObject selectedObject;
     GameObject port;
+    public GameObject pointPrefab;
 
     //переменные--------------------------------------------------------------
    
@@ -48,24 +50,28 @@ public class LineManager : MonoBehaviour
     void Update()
     {
         OnEditorMode();
+        LinePositionsSet();
     }
     public void OnEditorMode()
     {
-        if (routesEditorButton.RoutesEditorIsEnabled && Input.GetMouseButtonDown(0) && PortCheck())
+        if (routesEditorButton.RoutesEditorIsEnabled && Input.GetMouseButtonDown(0))
         {
-            ports.Add(port);
+            if (PortCheck())
+            {
+                ports.Add(port);
 
-            if (firstPortSelected)
-            {
-                lineRenderer = lineManager.AddComponent<LineRenderer>();
-                lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
-                lrSmoother.Line = lineRenderer;
-                PointsAddition(); 
-                firstPortSelected = false;
-            }
-            else
-            {
-                PointsAddition();
+                if (firstPortSelected)
+                {
+                    lineRenderer = lineManager.AddComponent<LineRenderer>();
+                    lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
+                    lrSmoother.Line = lineRenderer;
+                    PointsAddition();
+                    firstPortSelected = false;
+                }
+                else
+                {
+                    PointsAddition();
+                }
             }
         }
     }
@@ -76,11 +82,13 @@ public class LineManager : MonoBehaviour
             {
                 selectedObject = hit.collider.gameObject;
                 Transform parentTransform = selectedObject.transform.parent;
-                port = parentTransform.gameObject;
-
-                if (parentTransform.CompareTag("port"))
+                if (parentTransform != null)
                 {
-                    return true;
+                    if (parentTransform.CompareTag("port"))
+                    {
+                        port = parentTransform.gameObject;
+                        return true;
+                    }
                 }
             }
         return false;
@@ -118,8 +126,8 @@ public class LineManager : MonoBehaviour
                     arrayFillNumber++; 
                 }
             }
-            lineRenderer.positionCount = points.Length;
-            lineRenderer.SetPositions(points);
+
+            LinePositionsSet();
 
             if (arrayFillNumber == points.Length) 
             { 
@@ -174,9 +182,20 @@ public class LineManager : MonoBehaviour
             }
             return linePoints[linePointNumber];
         }
-        
-  
-
-
+    }
+    void PointObjectCreation()
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            GameObject point = Instantiate(pointPrefab, points[i], Quaternion.identity);
+            pointBehaviour = point.GetComponent<PointBehaviour>();
+            pointBehaviour.pointID = i;
+        }
+    }
+    void LinePositionsSet()
+    {
+        lineRenderer.positionCount = points.Length;
+        lineRenderer.SetPositions(points);
+        PointObjectCreation();
     }
 }
