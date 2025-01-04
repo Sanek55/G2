@@ -1,3 +1,4 @@
+using Dreamteck.Splines;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class PointBehaviour : MonoBehaviour
         Vector3 mousePosition = GetMouseWorldPosition();
         transform.position = new Vector3(mousePosition.x, yCord, mousePosition.z) + offset;
         lineManager.points[pointID] = transform.position;
+        lineManager.lineRenderer.SetPositions(lineManager.points);
 
     }
     public Vector3 GetMouseWorldPosition()

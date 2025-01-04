@@ -50,7 +50,7 @@ public class LineManager : MonoBehaviour
     void Update()
     {
         OnEditorMode();
-        LinePositionsSet();
+        //LinePositionsSet();
     }
     public void OnEditorMode()
     {
@@ -127,7 +127,9 @@ public class LineManager : MonoBehaviour
                 }
             }
 
-            LinePositionsSet();
+            lineRenderer.positionCount = points.Length;
+            lineRenderer.SetPositions(points);
+            PointObjectCreation();
 
             if (arrayFillNumber == points.Length) 
             { 
@@ -192,10 +194,10 @@ public class LineManager : MonoBehaviour
             pointBehaviour.pointID = i;
         }
     }
-    void LinePositionsSet()
+    /*void LinePositionsSet()
     {
         lineRenderer.positionCount = points.Length;
         lineRenderer.SetPositions(points);
         PointObjectCreation();
-    }
+    }*/
 }
