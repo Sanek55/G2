@@ -9,7 +9,7 @@ public class PointBehaviour : MonoBehaviour
     public int pointID;
     public Vector3 offset; // Смещение между мышью и объектом
     private Camera mainCamera;
-
+    
 
     public float yCord = -5f;
 

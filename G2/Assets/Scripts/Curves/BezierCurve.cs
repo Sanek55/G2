@@ -4,7 +4,7 @@
 public class BezierCurve
 {
     public Vector3[] Points;
-    public LineManager lineManager;
+    //public LineManager lineManager;
 
     public BezierCurve()
     {

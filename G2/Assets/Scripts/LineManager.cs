@@ -13,6 +13,8 @@ using System.Net;
 using UnityEngine.AI;
 using Dreamteck.Splines.Editor;
 using Dreamteck.Utilities;
+using TMPro;
+using Unity.VisualScripting;
 
 public class LineManager : MonoBehaviour
 {
@@ -22,10 +24,10 @@ public class LineManager : MonoBehaviour
     public Utilities utilities;
     public GameObject lineManager;
     public LineRendererSmoother lrSmoother;
-    public LineRendererSmoother lrSmootherEditor;
     public LineRenderer lineRenderer;
     public BezierCurve bezierCurve;
     PointBehaviour pointBehaviour;
+    TextMeshProUGUI portsListDisplay;
 
     //מבתוךעû-----------------------------------------------------------------
 
@@ -39,6 +41,7 @@ public class LineManager : MonoBehaviour
     public Vector3[] points = new Vector3[4];
     bool firstPortSelected = true;
     public int repetitionsCounter;
+    string allPortsNames;
 
     //------------------------------------------------------------------------
 
@@ -46,11 +49,19 @@ public class LineManager : MonoBehaviour
     {
         points = bezierCurve.Points;
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
+        GameObject portsList = GameObject.Find("Ports list");
+        portsListDisplay = portsList.GetComponent<TextMeshProUGUI>();
+        
     }
     void Update()
     {
+        
+        
         OnEditorMode();
-        //LinePositionsSet();
+        /*if (lrSmoother != null && ports.Count >= 3)
+        {
+            lrSmoother.SmoothPath();
+        }*/
     }
     public void OnEditorMode()
     {
@@ -59,7 +70,9 @@ public class LineManager : MonoBehaviour
             if (PortCheck())
             {
                 ports.Add(port);
-
+                allPortsNames += ports[ports.Count-1].name + "\n";
+                portsListDisplay.text = allPortsNames;
+                
                 if (firstPortSelected)
                 {
                     lineRenderer = lineManager.AddComponent<LineRenderer>();
