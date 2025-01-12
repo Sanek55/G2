@@ -10,7 +10,7 @@ public class MinusButton : MonoBehaviour
     {
         addShipScript = (GameObject.Find("AddShipPanel")).GetComponent<AddShip>();
     }
-    private void OnButtonClick()
+    public void OnButtonClick()
     {
         switch (shipType)
         {

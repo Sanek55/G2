@@ -16,7 +16,6 @@ public class FinishRouteCreationButton : MonoBehaviour
     public void ButtonClicked()
     {
         BasicCanvasIsEnabled = !BasicCanvasIsEnabled;
-        isRoutesEditorOn = !BasicCanvasIsEnabled;
         BasicCanvas.SetActive(BasicCanvasIsEnabled);
         RoutesEditor.SetActive(!BasicCanvasIsEnabled);
 
