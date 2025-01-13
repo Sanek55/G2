@@ -25,6 +25,7 @@ public class LineManager : MonoBehaviour
     public GameObject lineManager;
     public LineRendererSmoother lrSmoother;
     public LineRenderer lineRenderer;
+    public LineLengthCalculator lineLengthCalculator;
     public BezierCurve bezierCurve;
     PointBehaviour pointBehaviour;
     TextMeshProUGUI portsListDisplay;
@@ -48,6 +49,7 @@ public class LineManager : MonoBehaviour
     public void Awake()
     {
         points = bezierCurve.Points;
+        lineLengthCalculator = GetComponent<LineLengthCalculator>();
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
         GameObject portsList = GameObject.Find("Ports list");
         portsListDisplay = portsList.GetComponent<TextMeshProUGUI>();
@@ -78,6 +80,7 @@ public class LineManager : MonoBehaviour
                     lineRenderer = lineManager.AddComponent<LineRenderer>();
                     lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
                     lrSmoother.Line = lineRenderer;
+                    lineLengthCalculator.lineRenderer = lineRenderer;
                     PointsAddition();
                     firstPortSelected = false;
                 }

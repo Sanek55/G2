@@ -1046,6 +1046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288046847}
   - component: {fileID: 288046846}
+  - component: {fileID: 288046848}
   m_Layer: 0
   m_Name: LineManager
   m_TagString: Untagged
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   lineManager: {fileID: 288046845}
   lrSmoother: {fileID: 0}
   lineRenderer: {fileID: 0}
+  lineLengthCalculator: {fileID: 0}
   bezierCurve:
     Points:
     - {x: 0, y: 0, z: 0}
@@ -1095,6 +1097,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &288046848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288046845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babe0f876fb0d6a42a125f77c0e40deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineManager: {fileID: 0}
+  lineRenderer: {fileID: 0}
+  length: 0
 --- !u!1 &292336797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1444,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 3000
-  field of view: 40
+  field of view: 100
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6334,6 +6351,7 @@ MonoBehaviour:
   averageShipPrice: 500
   largeShipAmount: 0
   largeShipPrice: 1000
+  costOfOneLinePArt: 1
 --- !u!1 &1524551961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7841,7 +7859,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1263848600}
   m_Follow: {fileID: 1263848600}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 100
     OrthographicSize: 5
     NearClipPlane: 1
     FarClipPlane: 3000
