@@ -7,4 +7,5 @@ public class Ship : MonoBehaviour
 {
     public ShipStats stats;
 
+
 }

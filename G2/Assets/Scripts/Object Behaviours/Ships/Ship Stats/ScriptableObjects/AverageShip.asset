@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AverageShip
   m_EditorClassIdentifier: 
   Name: 
+  shipType: 1
   LoadCapacity: 7
   Price: 500
   Speed: 1
