@@ -4,15 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using JetBrains.Annotations;
-using Dreamteck.Splines;
-using Dreamteck;
 using System;
 using UnityEngine.U2D;
 using UnityEditor.Experimental.GraphView;
 using System.Net;
 using UnityEngine.AI;
-using Dreamteck.Splines.Editor;
-using Dreamteck.Utilities;
 using TMPro;
 using Unity.VisualScripting;
 
