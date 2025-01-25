@@ -1,5 +1,6 @@
 using Dreamteck.Splines;
 using Unity.VisualScripting;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
@@ -9,6 +10,7 @@ public class PortBehaviour : MonoBehaviour
     //�������� �����
     public string portName;
     public int portID;
+    public Region localRegion;
     // Temporary 
     public bool isShipInPort = false; // ����� �������� �� ��� � �����������
     // ���������
@@ -34,17 +36,18 @@ public class PortBehaviour : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         DetectRegion();
+
+        //routesEditor = FindObjectOfType<RoutesEditor>();
+        //Debug.Log(routesEditor);
+        // routesEditorManager = splineManager.GetComponent<LineManager>();
+
+
     }
 
     void Update()
     {
         PortProduction();
         OnShipEntrance();
-       
-        //routesEditorManager.OnPortClickEditorMode();
-
-
-
     }
     void OnShipEntrance()
     {
@@ -97,5 +100,7 @@ public class PortBehaviour : MonoBehaviour
                 localRegion = region;
             }
         }
+
+
     }
 }
