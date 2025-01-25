@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LargeShip
   m_EditorClassIdentifier: 
   Name: 
+  shipType: 2
   LoadCapacity: 10
   Price: 1000
   Speed: 3

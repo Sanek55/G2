@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShipStats : ScriptableObject
 {
     public string Name;
+    public int shipType;
     public int LoadCapacity;
     public int Price;
     public float Speed;
