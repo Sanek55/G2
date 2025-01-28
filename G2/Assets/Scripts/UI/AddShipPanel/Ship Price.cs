@@ -29,7 +29,7 @@ public class ShipPrice : MonoBehaviour
                 textPanel.text = "Small ship price: " + shipPrice;
                 break;
             case 1:
-                shipPrice = addShipScript.averageShipPrice;
+                shipPrice = addShipScript.mediumShipPrice;
                 textPanel.text = "Average ship price: " + shipPrice;
                 break;
             case 2:

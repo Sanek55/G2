@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0f2ab256bdacc4dbb7f734d21197c7, type: 3}
   m_Name: LargeShip
   m_EditorClassIdentifier: 
-  Name: 
+  name: 
   shipType: 2
-  LoadCapacity: 10
-  Price: 1000
-  Speed: 3
-  SupplyAmount: 7
+  loadCapacity: 5
+  price: 200
+  speed: 3
+  supplyAmount: 5

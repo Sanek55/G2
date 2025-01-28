@@ -19,7 +19,7 @@ public class PlusButton : MonoBehaviour
                 addShipScript.smallShipAmount++;
                 break;
             case 1:
-                addShipScript.averageShipAmount++;
+                addShipScript.mediumShipAmount++;
                 break;
             case 2: 
                 addShipScript.largeShipAmount++;

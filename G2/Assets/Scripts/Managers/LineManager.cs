@@ -18,7 +18,7 @@ public class LineManager : MonoBehaviour
 
     private RoutesEditorButton routesEditorButton;
     public Utilities utilities;
-    public GameObject lineManager;
+    public GameObject route;
     public LineRendererSmoother lrSmoother;
     public LineRenderer lineRenderer;
     public LineLengthCalculator lineLengthCalculator;
@@ -67,8 +67,8 @@ public class LineManager : MonoBehaviour
                 
                 if (firstPortSelected)
                 {
-                    lineRenderer = lineManager.AddComponent<LineRenderer>();
-                    lrSmoother = lineManager.AddComponent<LineRendererSmoother>();
+                    lineRenderer = route.AddComponent<LineRenderer>();
+                    lrSmoother = route.AddComponent<LineRendererSmoother>();
                     lrSmoother.Line = lineRenderer;
                     lineLengthCalculator.lineRenderer = lineRenderer;
                     PointsAddition();
@@ -86,12 +86,20 @@ public class LineManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+               /* selectedObject = hit.collider.gameObject;
+                Transform parentTransform = selectedObject.transform.parent;
+                if (parentTransform != null)
+                {
+                    if (parentTransform.CompareTag("port"))
+                    {
+                        port = parentTransform.gameObject;
+                        return true;
+                    }
+                }*/
                selectedObject = hit.collider.gameObject;
                if (selectedObject.CompareTag("port"))
                {
                     port = selectedObject;
-                    PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
-                    portBehaviour.operationCanvas.SetActive();
                     return true;
                }
             }

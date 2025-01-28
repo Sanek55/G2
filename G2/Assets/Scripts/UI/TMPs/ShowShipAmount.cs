@@ -22,7 +22,7 @@ public class ShowShipAmount : MonoBehaviour
                 amount = addShip.smallShipAmount;
                 break;
             case 1:
-                amount = addShip.averageShipAmount;
+                amount = addShip.mediumShipAmount;
                 break;
             case 2:
                 amount = addShip.largeShipAmount;

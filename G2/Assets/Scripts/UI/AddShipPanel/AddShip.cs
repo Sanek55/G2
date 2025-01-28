@@ -7,8 +7,8 @@ public class AddShip : MonoBehaviour
 {
     public int smallShipAmount;
     public int smallShipPrice = 200;
-    public int averageShipAmount;
-    public int averageShipPrice = 500;
+    public int mediumShipAmount;
+    public int mediumShipPrice = 500;
     public int largeShipAmount;
     public int largeShipPrice = 1000;
     public int costOfOneLinePArt = 1;
@@ -17,12 +17,12 @@ public class AddShip : MonoBehaviour
     public int CalculateTotalCost()
     {
         int lineCost = (int)lineLengthCalculator.length * costOfOneLinePArt;
-        int totalCost = smallShipAmount*smallShipPrice + averageShipAmount*averageShipPrice + largeShipAmount*largeShipPrice + lineCost;
+        int totalCost = smallShipAmount*smallShipPrice + mediumShipAmount*mediumShipPrice + largeShipAmount*largeShipPrice + lineCost;
         return totalCost;
     }
     void Awake()
     {
-        lineLengthCalculator = (GameObject.Find("LineManager")).GetComponent<LineLengthCalculator>();
+        lineLengthCalculator = (GameObject.Find("Route")).GetComponent<LineLengthCalculator>();
         textMeshProUGUI = (GameObject.Find("TotalCost")).GetComponent<TextMeshProUGUI>();
     }
     private void Update()
