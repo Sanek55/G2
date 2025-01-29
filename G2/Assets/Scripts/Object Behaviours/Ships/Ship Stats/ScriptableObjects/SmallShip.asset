@@ -17,4 +17,4 @@ MonoBehaviour:
   loadCapacity: 3
   price: 50
   speed: 50
-  supplyLimit: 0
+  supplyLimit: 5

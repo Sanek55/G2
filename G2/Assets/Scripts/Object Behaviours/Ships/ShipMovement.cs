@@ -33,7 +33,8 @@ public class ShipMovement : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(targetWaypoint - transform.position);
         Vector3 currentEulerAngles = transform.rotation.eulerAngles;
         Vector3 targetEulerAngles = targetRotation.eulerAngles;
-        targetEulerAngles.x = currentEulerAngles.x;
+        targetEulerAngles.x = -90;
+        targetEulerAngles.z -= 90;
         transform.rotation = Quaternion.Euler(targetEulerAngles);
     }
 }

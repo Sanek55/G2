@@ -11,8 +11,6 @@ public class PortBehaviour : MonoBehaviour
     public string portName;
     public int portID;
     public Region localRegion;
-    // Temporary 
-    public bool isShipInPort = false; // ����� �������� �� ��� � �����������
     // ���������
     public int MaxAmountOfSupplies = 10;//�������� ��� ���������
     public int currentAmountOfSupplies = 1; // ����� �������� �� ��� ��� �������
@@ -28,6 +26,11 @@ public class PortBehaviour : MonoBehaviour
     public bool[] productsTypesToSell = new bool[7];
     public bool[] productsTypesToUnload = new bool[7];
     public bool[] productsTypesToLoad = new bool[7];
+    // Operations
+    public bool[] operationsChoosed = new bool[3]; // 1 - Sell, 2 - Unload, 3 - Load.
+    public bool[] productsTypesToSell = new bool[7];
+    public bool[] productsTypesToUnload = new bool[7];
+    public bool[] productsTypesToLoad = new bool[7];
     private GameManager gameManager;
     //public GameObject splineManager;
     private LineManager routesEditorManager; // = new RoutesEditor();
@@ -36,28 +39,11 @@ public class PortBehaviour : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         DetectRegion();
-
-        //routesEditor = FindObjectOfType<RoutesEditor>();
-        //Debug.Log(routesEditor);
-        // routesEditorManager = splineManager.GetComponent<LineManager>();
-
-
     }
 
     void Update()
     {
         PortProduction();
-        OnShipEntrance();
-    }
-    void OnShipEntrance()
-    {
-        if (isShipInPort)
-        {
-            GetTotalSupplyIncrease();
-            int supplyIncreaseCost = singleSupplyCost * totalSupplyIncrease;
-            if (supplyIncreaseCost < gameManager.money) { gameManager.money -= supplyIncreaseCost; }
-            else { Debug.Log("game over"); }
-        }
     }
     public void GetTotalSupplyIncrease()
     {
@@ -73,7 +59,6 @@ public class PortBehaviour : MonoBehaviour
             currentAmountOfSupplies += totalSupplyIncrease;
         }
     }
-
     void PortProduction()
     {
         productionCooldown -= Time.deltaTime;
@@ -100,7 +85,5 @@ public class PortBehaviour : MonoBehaviour
                 localRegion = region;
             }
         }
-
-
     }
 }

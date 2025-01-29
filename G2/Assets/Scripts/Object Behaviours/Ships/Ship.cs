@@ -8,6 +8,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     public ShipStats stats;
+    public Operations operations;
     public Product[] cargoHold;
     public float supplies;
     private void Start()
@@ -17,11 +18,31 @@ public class Ship : MonoBehaviour
     }
     private void Update()
     {
-        InvokeRepeating("SupplyDecrease", 1, 0.1f);
+        InvokeRepeating("SupplyDecrease", 1, 50f);
     }
     private void SupplyDecrease()
     {
-        supplies -= 0.1f;
+        supplies -= 0.0001f;
+        SupplyLimits();
+    }
+    public void SupplyLimits()
+    {
+        if (supplies < 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else if (supplies > stats.supplyLimit)
+        {
+            supplies = stats.supplyLimit;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("port"))
+        {
+            PortBehaviour portBehaviour = other.gameObject.GetComponent<PortBehaviour>();
+            supplies += portBehaviour.portSuppliesLevel;
+        }
     }
 }
 
