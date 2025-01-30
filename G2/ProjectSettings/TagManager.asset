@@ -8,6 +8,7 @@ TagManager:
   - point
   - ship
   - region
+  - platform
   layers:
   - Default
   - TransparentFX
