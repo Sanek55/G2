@@ -9,11 +9,11 @@ public class Ship : MonoBehaviour
 {
     public ShipStats stats;
     public Operations operations;
-    public Product[] cargoHold;
+    public Dictionary<ProductType, int> _cargoHold = new();
+    public Dictionary<ProductType, OperationType> _tradeRules;
     public float supplies;
     private void Start()
     {
-        cargoHold = new Product[stats.loadCapacity];
         supplies = stats.supplyLimit;
     }
     private void Update()
@@ -42,7 +42,12 @@ public class Ship : MonoBehaviour
         {
             PortBehaviour portBehaviour = other.gameObject.GetComponent<PortBehaviour>();
             supplies += portBehaviour.portSuppliesLevel;
+            _tradeRules = portBehaviour._tradeRules;
         }
+    }
+    public void TradeInteraction()
+    {
+
     }
 }
 

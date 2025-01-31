@@ -86,20 +86,12 @@ public class LineManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-               /* selectedObject = hit.collider.gameObject;
-                Transform parentTransform = selectedObject.transform.parent;
-                if (parentTransform != null)
-                {
-                    if (parentTransform.CompareTag("port"))
-                    {
-                        port = parentTransform.gameObject;
-                        return true;
-                    }
-                }*/
                selectedObject = hit.collider.gameObject;
                if (selectedObject.CompareTag("port"))
                {
                     port = selectedObject;
+                    PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
+                    portBehaviour.operationCanvas.SetActive();
                     return true;
                }
             }

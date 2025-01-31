@@ -1,8 +1,10 @@
 using Dreamteck.Splines;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
+public enum OperationType { Sell, Unload, Load }
 public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
 public enum OperationType { Sell, Unload, Load }
 public class PortBehaviour : MonoBehaviour
@@ -22,23 +24,15 @@ public class PortBehaviour : MonoBehaviour
     public float productionCooldown = 60f;
     public int resourseCounter = 0; // Replace later
     // Operations
-    public bool[] operationsChoosed = new bool[3]; // 1 - Sell, 2 - Unload, 3 - Load.
-    public bool[] productsTypesToSell = new bool[7];
-    public bool[] productsTypesToUnload = new bool[7];
-    public bool[] productsTypesToLoad = new bool[7];
-    // Operations
-    public bool[] operationsChoosed = new bool[3]; // 1 - Sell, 2 - Unload, 3 - Load.
-    public bool[] productsTypesToSell = new bool[7];
-    public bool[] productsTypesToUnload = new bool[7];
-    public bool[] productsTypesToLoad = new bool[7];
-    private GameManager gameManager;
-    //public GameObject splineManager;
-    private LineManager routesEditorManager; // = new RoutesEditor();
+    public Dictionary<ProductType, OperationType> _tradeRules = new();
+    public OperationType currentOperation;
+    public OperationCanvas operationCanvas;
+   
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
         DetectRegion();
+        
     }
 
     void Update()
@@ -85,5 +79,9 @@ public class PortBehaviour : MonoBehaviour
                 localRegion = region;
             }
         }
+    }
+    public void SetTradeRule(OperationType operationType, ProductType product)
+    {
+        _tradeRules[product] = operationType;
     }
 }
