@@ -14,7 +14,7 @@ using Unity.VisualScripting;
 
 public class LineManager : MonoBehaviour
 {
-    //ссылки------------------------------------------------------------------
+    //пїЅпїЅпїЅпїЅпїЅпїЅ------------------------------------------------------------------
 
     private RoutesEditorButton routesEditorButton;
     public Utilities utilities;
@@ -26,13 +26,13 @@ public class LineManager : MonoBehaviour
     PointBehaviour pointBehaviour;
     TextMeshProUGUI portsListDisplay;
 
-    //объекты-----------------------------------------------------------------
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-----------------------------------------------------------------
 
     GameObject selectedObject;
     GameObject port;
     public GameObject pointPrefab;
 
-    //переменные--------------------------------------------------------------
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ--------------------------------------------------------------
    
     public List<GameObject> ports = new List<GameObject>();
     public Vector3[] points = new Vector3[4];
@@ -53,13 +53,7 @@ public class LineManager : MonoBehaviour
     }
     void Update()
     {
-        
-        
         OnEditorMode();
-        /*if (lrSmoother != null && ports.Count >= 3)
-        {
-            lrSmoother.SmoothPath();
-        }*/
     }
     public void OnEditorMode()
     {
@@ -92,16 +86,14 @@ public class LineManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                selectedObject = hit.collider.gameObject;
-                Transform parentTransform = selectedObject.transform.parent;
-                if (parentTransform != null)
-                {
-                    if (parentTransform.CompareTag("port"))
-                    {
-                        port = parentTransform.gameObject;
-                        return true;
-                    }
-                }
+               selectedObject = hit.collider.gameObject;
+               if (selectedObject.CompareTag("port"))
+               {
+                    port = selectedObject;
+                    PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
+                    portBehaviour.operationCanvas.SetActive();
+                    return true;
+               }
             }
         return false;
     }
@@ -180,7 +172,7 @@ public class LineManager : MonoBehaviour
             }
             return points;
         }
-        Vector3 PointAddition(Vector3[] linePoints, int linePointNumber, Vector3 pointCords) //подкорректировать
+        Vector3 PointAddition(Vector3[] linePoints, int linePointNumber, Vector3 pointCords) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
 
             if (linePoints[linePointNumber] == null)
@@ -204,10 +196,4 @@ public class LineManager : MonoBehaviour
             pointBehaviour.pointID = i;
         }
     }
-    /*void LinePositionsSet()
-    {
-        lineRenderer.positionCount = points.Length;
-        lineRenderer.SetPositions(points);
-        PointObjectCreation();
-    }*/
 }

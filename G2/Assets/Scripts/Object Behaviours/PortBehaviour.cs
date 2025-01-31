@@ -1,23 +1,31 @@
+using Dreamteck.Splines;
+using Unity.VisualScripting;
 using UnityEngine;
 
+public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
+public enum OperationType { Sell, Unload, Load }
 public class PortBehaviour : MonoBehaviour
 {
-    //Свойства Порта
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     public string portName;
     public int portID;
     // Temporary 
-    public bool isShipInPort = false; // Потом поменять на код с коллайдером
-    // Снабжение
-    public int MaxAmountOfSupplies = 10;//Значение дял изменения
-    public int currentAmountOfSupplies = 1; // Потом поменять на код для корабля
+    public bool isShipInPort = false; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public int MaxAmountOfSupplies = 10;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public int currentAmountOfSupplies = 1; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public int singleSupplyCost = 3;
     public int portSuppliesLevel = 1;
     public int portProductionLevel = 0;
     private int totalSupplyIncrease = 0;
-    // Производство
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public float productionCooldown = 60f;
     public int resourseCounter = 0; // Replace later
-
+    // Operations
+    public bool[] operationsChoosed = new bool[3]; // 1 - Sell, 2 - Unload, 3 - Load.
+    public bool[] productsTypesToSell = new bool[7];
+    public bool[] productsTypesToUnload = new bool[7];
+    public bool[] productsTypesToLoad = new bool[7];
     private GameManager gameManager;
     //public GameObject splineManager;
     private LineManager routesEditorManager; // = new RoutesEditor();
@@ -25,12 +33,7 @@ public class PortBehaviour : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-
-        //routesEditor = FindObjectOfType<RoutesEditor>();
-        //Debug.Log(routesEditor);
-       // routesEditorManager = splineManager.GetComponent<LineManager>();
-
-
+        DetectRegion();
     }
 
     void Update()
@@ -80,5 +83,19 @@ public class PortBehaviour : MonoBehaviour
             }
         }
     }
+    void DetectRegion()
+    {
+        Collider portCollider = GetComponent<Collider>();
+        Region[] regions = FindObjectsOfType<Region>();
 
+        foreach (Region region in regions)
+        {
+            Collider regionCollider = region.GetComponent<Collider>();
+
+            if (regionCollider != null && portCollider.bounds.Intersects(regionCollider.bounds))
+            {
+                localRegion = region;
+            }
+        }
+    }
 }
