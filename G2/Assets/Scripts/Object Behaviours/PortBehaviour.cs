@@ -4,9 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
-public enum OperationType { Sell, Unload, Load }
-public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
-public enum OperationType { Sell, Unload, Load }
+public enum OperationType { Sell, Unload, Load, NoValue}
 public class PortBehaviour : MonoBehaviour
 {
     //�������� �����
@@ -25,6 +23,7 @@ public class PortBehaviour : MonoBehaviour
     public int resourseCounter = 0; // Replace later
     // Operations
     public Dictionary<ProductType, OperationType> _tradeRules = new();
+    public Dictionary<ProductType, int> _warehouse;
     public OperationType currentOperation;
     public OperationCanvas operationCanvas;
    

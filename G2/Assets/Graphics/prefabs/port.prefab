@@ -255,7 +255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3483047800846798946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3975441733852335787}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3975441733852335787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 6
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &811545768322431805
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3077328023590586998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 397027911970008672}
+        m_TargetAssemblyTypeName: LoadButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &397027911970008672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +979,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383993406802525587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 707789277437596483}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &707789277437596483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,7 +1006,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 7
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &3797443651719762060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1264,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5142366783714163274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7902525627229346195}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7902525627229346195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 0
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &3981194471929962663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4479069186296557511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6367907713118617171}
+        m_TargetAssemblyTypeName: SellButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6367907713118617171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,7 +1830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4589040846953070592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690436084540102109}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1690436084540102109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,7 +1857,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 5
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &5739019717127616756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3503411833589533683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1900,6 +1980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ed5e9b62d5c4149a0b0d6c8cbb3da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoutesEditorButton: {fileID: 0}
+  PortBehaviour: {fileID: 0}
+  IsActive: 0
 --- !u!1 &5905975511438202395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +2104,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6553542539166650810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2262738718157044827}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2262738718157044827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2036,7 +2131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 4
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &5993476313907194969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7910906971371563287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 838487150942884194}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &838487150942884194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,7 +2282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 1
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &6095212154520038446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2406,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8168674051366626281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 681942732992649728}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &681942732992649728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,7 +2433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 3
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &6480683644491523387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,7 +2557,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6582835878816765359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4249739085267348579}
+        m_TargetAssemblyTypeName: ResourceButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4249739085267348579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,7 +2584,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductID: 2
   port: {fileID: 0}
-  IsChoosed: 0
+  isValueSet: 0
+  tradeRule: 3
+  isChoosed: 0
 --- !u!1 &6884092605949325107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2976,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1948501727148935625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3714698059385454314}
+        m_TargetAssemblyTypeName: UnloadButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3714698059385454314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,7 +3739,8 @@ MonoBehaviour:
   portProductionLevel: 0
   productionCooldown: 60
   resourseCounter: 0
-  currentOperation: 0
+  currentOperation: 3
+  operationCanvas: {fileID: 7477996704778359943}
 --- !u!136 &8357005684005450876
 CapsuleCollider:
   m_ObjectHideFlags: 0

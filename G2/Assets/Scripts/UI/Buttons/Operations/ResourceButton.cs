@@ -7,7 +7,9 @@ public class ResourceButton : MonoBehaviour
 {
     public int ProductID;
     public PortBehaviour port;
-    public bool IsChoosed = false;
+    public bool isValueSet = false;
+    public OperationType tradeRule = OperationType.NoValue;
+    public bool isChoosed = false;
     Transform current;
     private void Awake()
     {
@@ -23,14 +25,19 @@ public class ResourceButton : MonoBehaviour
     }
     public void OnButtonClick()
     {
-        IsChoosed = !IsChoosed;
-        if (IsChoosed)
+        if (tradeRule == port.currentOperation || tradeRule == OperationType.NoValue)
         {
-            port.SetTradeRule(port.currentOperation, (ProductType)ProductID);
-        }
-        else
-        {
-            // настройки для графических изменений кнопки
+            isChoosed = !isChoosed;
+
+            if (isChoosed && !isValueSet)
+            {
+                tradeRule = port.currentOperation;
+                port.SetTradeRule(port.currentOperation, (ProductType)ProductID);
+            }
+            else
+            {
+                // настройки для графических изменений кнопки
+            }
         }
     }
 }

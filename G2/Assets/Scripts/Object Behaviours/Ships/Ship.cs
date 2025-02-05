@@ -1,6 +1,7 @@
 using Dreamteck.Splines.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class Ship : MonoBehaviour
     public Dictionary<ProductType, int> _cargoHold = new();
     public Dictionary<ProductType, OperationType> _tradeRules;
     public float supplies;
+    public PortBehaviour portBehaviour;
+    public bool currentLoad;
     private void Start()
     {
         supplies = stats.supplyLimit;
@@ -48,6 +51,34 @@ public class Ship : MonoBehaviour
     public void TradeInteraction()
     {
 
+    }
+    public List<ProductType> GetFittingProduct(OperationType operationType)
+    {
+        var filteredResources = _tradeRules
+            .Where(pair => pair.Value == operationType)
+            .Select(pair => pair.Key)
+            .ToList();
+        return filteredResources;
+    }
+    public bool IsCargoLoadable()
+    {
+        if (GetCurrentLoad() < stats.loadCapacity)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public int GetCurrentLoad()
+    {
+        int totalLoad = 0;
+        foreach (int itemAmount in _cargoHold.Values)
+        {
+            totalLoad += itemAmount;
+        }
+        return totalLoad;
     }
 }
 
