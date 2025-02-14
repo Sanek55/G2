@@ -2,6 +2,7 @@ using Dreamteck.Splines;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public enum ProductType { Gold, Iron, Weapons, Fur, Dyes, Opium, Porcelain, Silk, Spices }
 public enum OperationType { Sell, Unload, Load, NoValue}
@@ -19,8 +20,8 @@ public class PortBehaviour : MonoBehaviour
     public int portProductionLevel = 0;
     private int totalSupplyIncrease = 0;
     // ������������
+    public ProductType productionResource;
     public float productionCooldown = 60f;
-    public int resourseCounter = 0; // Replace later
     // Operations
     public Dictionary<ProductType, OperationType> _tradeRules = new();
     public Dictionary<ProductType, int> _warehouse;
@@ -31,7 +32,8 @@ public class PortBehaviour : MonoBehaviour
     void Start()
     {
         DetectRegion();
-        
+        productionResource = localRegion.regionalResource;
+       // SetResources();
     }
 
     void Update()
@@ -55,12 +57,12 @@ public class PortBehaviour : MonoBehaviour
     void PortProduction()
     {
         productionCooldown -= Time.deltaTime;
-        if (portProductionLevel >= 1)
+        if (portProductionLevel >= 1 && productionCooldown <= 0)
         {
-            if (productionCooldown <= 0)
+            productionCooldown = 60;
+            if (_warehouse.TryGetValue(productionResource, out int amount))
             {
-                resourseCounter += portProductionLevel;
-                productionCooldown = 60;
+                _warehouse[productionResource] = amount + portProductionLevel;
             }
         }
     }
@@ -82,5 +84,13 @@ public class PortBehaviour : MonoBehaviour
     public void SetTradeRule(OperationType operationType, ProductType product)
     {
         _tradeRules[product] = operationType;
+    }
+    private void SetResources()
+    {
+       /* int resourceCount = Enum.GetValues(typeof(ProductType)).Length;
+        for (int i = 0; i < resourceCount; i++)
+        {
+            _warehouse.Add((ProductType)i, 0);
+        }*/
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ResourceButton : MonoBehaviour
 {
-    public int ProductID;
+    public int productID;
     public PortBehaviour port;
     public bool isValueSet = false;
     public OperationType tradeRule = OperationType.NoValue;
@@ -34,7 +34,7 @@ public class ResourceButton : MonoBehaviour
             if (isChoosed && !isValueSet)
             {
                 tradeRule = port.currentOperation;
-                port.SetTradeRule(port.currentOperation, (ProductType)ProductID);
+                port.SetTradeRule(port.currentOperation, (ProductType)productID);
                 isValueSet = true;
                 switch (tradeRule)
                 {
@@ -49,9 +49,10 @@ public class ResourceButton : MonoBehaviour
                         break;
                 }
             }
-            else
+            else if (isChoosed == false && isValueSet)
             {
-                // настройки для графических изменений кнопки
+                this.GetComponent<Outline>().effectColor = Color.white;
+                port._tradeRules.Remove((ProductType)productID);
             }
         }
     }
