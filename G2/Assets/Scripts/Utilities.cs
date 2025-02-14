@@ -13,7 +13,7 @@ public class Utilities : MonoBehaviour
         }
         return newArray;
     }
-    public Vector3[] PointsArrayResize (Vector3[] source, int newSize)
+    public Vector3[] PointsArrayResize(Vector3[] source, int newSize)
     {
         Vector3[] newArray = new Vector3[newSize];
         for (int i = 0; i < Mathf.Min(source.Length, newSize); i++)
@@ -22,5 +22,12 @@ public class Utilities : MonoBehaviour
         }
         return newArray;
     }
+    /*GameObject GetClickedObject(out RaycastHit hit)
+    {
+        GameObject target = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+    }*/
+
 }
 

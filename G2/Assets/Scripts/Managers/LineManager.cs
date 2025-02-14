@@ -25,6 +25,7 @@ public class LineManager : MonoBehaviour
     public BezierCurve bezierCurve;
     PointBehaviour pointBehaviour;
     TextMeshProUGUI portsListDisplay;
+    RaycastManager raycastManager;
 
     //�������-----------------------------------------------------------------
 
@@ -44,6 +45,7 @@ public class LineManager : MonoBehaviour
 
     public void Awake()
     {
+        raycastManager = FindFirstObjectByType<RaycastManager>();
         points = bezierCurve.Points;
         lineLengthCalculator = GetComponent<LineLengthCalculator>();
         routesEditorButton = FindObjectOfType<RoutesEditorButton>();
@@ -83,18 +85,29 @@ public class LineManager : MonoBehaviour
     }
     public bool PortCheck()
     {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+        /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit) & pi.IsPointerOverUI())
+        {
+           selectedObject = hit.collider.gameObject;
+           if (selectedObject.CompareTag("port"))
+           {
+                port = selectedObject;
+                PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
+                portBehaviour.operationCanvas.SetActive();
+                return true;
+           }
+        }*/
+        if (raycastManager.TryGetHit(out RaycastHit hit) && !raycastManager.overUI) 
+        {
+            selectedObject = hit.collider.gameObject;
+            if (selectedObject.CompareTag("port"))
             {
-               selectedObject = hit.collider.gameObject;
-               if (selectedObject.CompareTag("port"))
-               {
-                    port = selectedObject;
-                    PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
-                    portBehaviour.operationCanvas.SetActive();
-                    return true;
-               }
+                port = selectedObject;
+                PortBehaviour portBehaviour = port.GetComponent<PortBehaviour>();
+                portBehaviour.operationCanvas.SetActive();
+                return true;
             }
+        }
         return false;
     }
     public void PointsAddition()

@@ -14,7 +14,7 @@ public class OperationCanvas : MonoBehaviour
     }
     public void SetActive()
     {
-        IsActive = !IsActive;
+        IsActive = true;
         this.gameObject.SetActive(IsActive);
     }
 }

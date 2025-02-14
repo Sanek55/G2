@@ -16,7 +16,7 @@ public class PortInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
 
-                if (hit.collider.CompareTag("Platform")) ;
+                if (hit.collider.CompareTag("Platform")) 
                 {
                     if (spawnedCanvas == null) // канвас еще не заспавнен
                     {
